@@ -47,9 +47,12 @@ class _TripListState extends State<TripList> {
       ),
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
-        child: Image.asset(
-          'images/${trip.img}',
-          height: 50.0,
+        child: Hero(
+          tag: "location-img-${trip.img}",
+          child: Image.asset(
+            'images/${trip.img}',
+            height: 50.0,
+          ),
         ),
       ),
       trailing: Text('\$${trip.price}'),
@@ -59,11 +62,10 @@ class _TripListState extends State<TripList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      key: _listKey,
-      itemCount: _tripTiles.length,
-      itemBuilder: (context, index) {
-        return _tripTiles[index];
-      }
-    );
+        key: _listKey,
+        itemCount: _tripTiles.length,
+        itemBuilder: (context, index) {
+          return _tripTiles[index];
+        });
   }
 }
